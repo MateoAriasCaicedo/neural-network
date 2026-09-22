@@ -1,36 +1,56 @@
-# Simple neural network
+# neural_network
 
-Minimal, pure-Python neural network code for learning purposes. No
-NumPy: everything uses plain Python builtins with explicit loops so the
-math stays visible.
+A pure-Python neural networks project for learning and experimentation.
 
-## Dense layer forward pass
+Everything is built with plain Python builtins and explicit loops — no
+NumPy — so the underlying math stays visible and understandable. This
+makes the code ideal for studying how neural networks work before moving
+on to vectorized libraries.
 
-The module [`neural_network.neural_network`](src/neural_network/neural_network.py) implements a
-single dense (fully connected) layer. Each neuron in the layer computes
-the dot product of its weights with the layer inputs, then adds its
-bias:
+## Features
 
-    ```text
-output_i = bias_i + sum_j(weight_ij * input_j)
+- Minimal, readable implementations with no external dependencies
+- Type-annotated public APIs
+- Shape validation with clear `ValueError` messages
+- Tested with [pytest](https://docs.pytest.org)
+
+## Project structure
+
+```text
+src/neural_network/
+    neural_network.py   # neural network layers and models
+tests/
+    test_neural_network.py
 ```
+
+## Current components
+
+The [`neural_network`](src/neural_network/neural_network.py) module
+currently provides a forward pass for a single dense (fully connected)
+layer, the building block of any neural network.
+
+Over time it will grow into a fuller toolkit, adding activation
+functions, multi-layer models, backpropagation, and training
+utilities.
+
+## Getting started
+
+Install the project and its dependencies:
+
+```bash
+uv sync
+```
+
+Basic usage:
 
 ```python
->>> from neural_network.neural_network import layer_neural_network
->>> layer_neural_network([1, 2, 3], [[1, 2, 3], [0, 1, 0]], [0, 1])
-[14, 3]
+from neural_network.neural_network import layer_neural_network
+
+output = layer_neural_network([1, 2, 3], [[1, 2, 3], [0, 1, 0]], [0, 1])
+print(output)  # [14, 3]
 ```
 
-- `inputs`: one value per connection into the layer.
-- `layer_weight[i]`: weights of neuron `i`; must match the input count.
-- `layer_bias[i]`: bias of neuron `i`; same length as `layer_weight`.
-
-A `ValueError` is raised when the shapes are inconsistent (mismatched
-bias count, or neuron weights that don't match the number of inputs).
-
 ## Running the tests
-
-Tests use [pytest](https://docs.pytest.org) (a dev dependency):
 
 ```bash
 uv run pytest

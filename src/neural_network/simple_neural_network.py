@@ -14,7 +14,7 @@ vectorized library such as NumPy would provide.
 from collections.abc import Sequence
 
 
-def layer_neural_network(
+def simple_neural_network(
     inputs: Sequence[float],
     layer_weight: Sequence[Sequence[float]],
     layer_bias: Sequence[float],
@@ -37,7 +37,7 @@ def layer_neural_network(
         A list with one output value per neuron.
 
     Examples:
-        >>> layer_neural_network([1, 2], [[1, 2]], [1])
+        >>> simple_neural_network([1, 2], [[1, 2]], [1])
         [6]
 
     Raises:
