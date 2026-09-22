@@ -18,16 +18,16 @@ on to vectorized libraries.
 
 ```text
 src/neural_network/
-    neural_network.py   # neural network layers and models
+    simple_neural_network.py   # forward pass of a simple dense layer
 tests/
-    test_neural_network.py
+    test_simple_neural_network.py
 ```
 
 ## Current components
 
-The [`neural_network`](src/neural_network/neural_network.py) module
-currently provides a forward pass for a single dense (fully connected)
-layer, the building block of any neural network.
+The [`simple_neural_network`](src/neural_network/simple_neural_network.py)
+module currently provides a forward pass for a single dense (fully
+connected) layer, the building block of any neural network.
 
 Over time it will grow into a fuller toolkit, adding activation
 functions, multi-layer models, backpropagation, and training
@@ -44,9 +44,9 @@ uv sync
 Basic usage:
 
 ```python
-from neural_network.neural_network import layer_neural_network
+from neural_network.simple_neural_network import simple_neural_network
 
-output = layer_neural_network([1, 2, 3], [[1, 2, 3], [0, 1, 0]], [0, 1])
+output = simple_neural_network([1, 2, 3], [[1, 2, 3], [0, 1, 0]], [0, 1])
 print(output)  # [14, 3]
 ```
 
