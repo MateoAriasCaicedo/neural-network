@@ -1,0 +1,30 @@
+[project]
+name = "neural_network"
+version = "0.1.0"
+description = "Minimal pure-Python neural network layers for learning purposes"
+readme = "README.md"
+authors = [
+    { name = "Mateo Arias", email = "luismateoariascaicedo@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "ipynotebook>=0.1.0",
+    "numpy>=2.5.3",
+]
+
+[project.scripts]
+neural_network = "neural_network:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
